@@ -20,12 +20,19 @@ public class Venue {
     private Long id;
 
     private String name;
-    private String address;
-    private Double latitude;
-    private Double longitude;
-    private String province;
-    private String city;
+    private String phoneNumber;
+    private String website;
+    private Integer rating;
     private String restrictions;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+
+    private Location location;
     @OneToMany(mappedBy = "venue", cascade = CascadeType.ALL)
     private List<HappyHourDetails> happyHourDetails;
+
+
+
+
 }

@@ -52,6 +52,15 @@ public class VenueController {
         return ResponseHandler.responseBuilder(null, HttpStatus.OK, venueService.getHappyHoursByVenueId(id));
 
     }
+
+    @Operation(summary = "Get venue happy hours", description = "", tags = {"venues"})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @GetMapping("/budget")
+    public ResponseEntity<Object> getAllVenuesBasedOnBudget(@RequestParam(value = "budget") double budget) {
+        return ResponseHandler.responseBuilder(null, HttpStatus.OK, venueService.getVenuesByBudget(budget));
+
+    }
+
     @Operation(summary = "Search for venue", description = "", tags = {"venues"})
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
     @GetMapping("/search")

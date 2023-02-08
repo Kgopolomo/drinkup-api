@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public class HappyHourDetailsService {
 
-    @Autowired private final HappyHourDetailsRepository happyHourDetailsRepository;
+    @Autowired private HappyHourDetailsRepository happyHourDetailsRepository;
 
     public HappyHourDetailsService(HappyHourDetailsRepository happyHourDetailsRepository) {
         this.happyHourDetailsRepository = happyHourDetailsRepository;
@@ -28,7 +28,16 @@ public class HappyHourDetailsService {
     }
 
     public HappyHourDetails updateHappyHour(long id, HappyHourDetails happyHourDetails) {
-        return happyHourDetailsRepository.save(happyHourDetails);
+        Optional<HappyHourDetails> existingHappyHour = happyHourDetailsRepository.findById(id);
+        if (existingHappyHour.isPresent()) {
+            HappyHourDetails updatedHappyHour = existingHappyHour.get();
+            updatedHappyHour.setStartTime(happyHourDetails.getStartTime());
+            updatedHappyHour.setEndTime(happyHourDetails.getEndTime());
+            updatedHappyHour.setName(happyHourDetails.getName());
+            updatedHappyHour.setDescription(happyHourDetails.getDescription());
+            return happyHourDetailsRepository.save(updatedHappyHour);
+        }
+        return null;
     }
 
     public Object deleteHappyHour(Long id) {

@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,4 +28,7 @@ public class HappyHourDetails {
     @ManyToOne
     @JoinColumn(name = "venue_id")
     private Venue venue;
+
+    @OneToMany(mappedBy = "happyHour", cascade = CascadeType.ALL)
+    private List<HappyHourItem> happyHourItems;
 }
