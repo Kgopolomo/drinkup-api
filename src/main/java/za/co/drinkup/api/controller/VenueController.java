@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import za.co.drinkup.api.dto.VenueDto;
 import za.co.drinkup.api.entity.HappyHourDetails;
 import za.co.drinkup.api.entity.Venue;
 import za.co.drinkup.api.response.ResponseHandler;
@@ -21,23 +20,23 @@ import java.util.List;
 @RequestMapping("/api/v1/venues")
 public class VenueController {
 
-    @Autowired private final VenueService venueService;
+    @Autowired private VenueService venueService;
 
     public VenueController(VenueService venueService) {
         this.venueService = venueService;
     }
 
     @Operation(summary = "Get venue list", description = "", tags = {"venues"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = Venue.class)))})
     @GetMapping(value = "", produces = {"application/json"})
     public ResponseEntity<Object> getVenues(){
 
-        return ResponseHandler.responseBuilder(null, HttpStatus.OK, venueService.getVenues());
+        return ResponseHandler.responseBuilder("", HttpStatus.OK, venueService.getVenues());
 
     }
 
     @Operation(summary = "Add new venue", description = "", tags = {"venues"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = Venue.class)))})
     @PostMapping(value = "", produces = {"application/json"})
     public ResponseEntity<Object> createVenue(@RequestBody Venue venue, @RequestBody List<HappyHourDetails> happyHourDetails){
 
@@ -46,7 +45,7 @@ public class VenueController {
     }
 
     @Operation(summary = "Get venue happy hours", description = "", tags = {"venues"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = Venue.class)))})
     @GetMapping("/venues/{id}/happy-hour")
     public ResponseEntity<Object> getHappyHourDetails(@PathVariable long id) {
         return ResponseHandler.responseBuilder(null, HttpStatus.OK, venueService.getHappyHoursByVenueId(id));
@@ -54,7 +53,7 @@ public class VenueController {
     }
 
     @Operation(summary = "Get venue happy hours", description = "", tags = {"venues"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = Venue.class)))})
     @GetMapping("/budget")
     public ResponseEntity<Object> getAllVenuesBasedOnBudget(@RequestParam(value = "budget") double budget) {
         return ResponseHandler.responseBuilder(null, HttpStatus.OK, venueService.getVenuesByBudget(budget));
@@ -62,7 +61,7 @@ public class VenueController {
     }
 
     @Operation(summary = "Search for venue", description = "", tags = {"venues"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = Venue.class)))})
     @GetMapping("/search")
     public ResponseEntity<Object> searchVenues(
             @RequestParam(value = "name", required = false) String name,
@@ -72,6 +71,17 @@ public class VenueController {
             @RequestParam(value = "proximity", required = false) Double proximity) {
 
         return ResponseHandler.responseBuilder(null, HttpStatus.OK, venueService.searchVenues(name, typeOfSpecial, city, rating, proximity));
+
+    }
+
+    @Operation(summary = "Get venue list by current location", description = "", tags = {"venues"})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = Venue.class)))})
+    @GetMapping(value = "/location", produces = {"application/json"})
+    public ResponseEntity<Object> getVenueByCurrentLocation(  @RequestParam(value = "latitude") Double latitude,
+                                                              @RequestParam(value = "longitude") Double longitude,
+                                                              @RequestParam(value = "proximityRange") Double proximityRange){
+
+        return ResponseHandler.responseBuilder("", HttpStatus.OK, venueService.getAllVenuesByLocation(latitude, longitude, proximityRange));
 
     }
 

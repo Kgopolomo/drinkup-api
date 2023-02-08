@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import za.co.drinkup.api.dto.VenueDto;
 import za.co.drinkup.api.entity.Location;
 import za.co.drinkup.api.response.ResponseHandler;
 import za.co.drinkup.api.service.LocationService;
@@ -27,7 +26,7 @@ public class LocationController {
 
 
     @Operation(summary = "Create new Location", description = "", tags = {"location"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = Location.class)))})
     @PostMapping(value = "", produces = {"application/json"})
     public ResponseEntity<Object> createLocation(@RequestBody Location location){
 

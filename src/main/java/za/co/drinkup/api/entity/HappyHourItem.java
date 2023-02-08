@@ -7,8 +7,6 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @Table(name="happyHourItems")
 public class HappyHourItem {
@@ -24,4 +22,40 @@ public class HappyHourItem {
     @ManyToOne
     @JoinColumn(name = "happyHour_id")
     private HappyHourDetails happyHour;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public String getItemDescription() {
+        return itemDescription;
+    }
+
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setHappyHour(HappyHourDetails happyHour) {
+        this.happyHour = happyHour;
+    }
 }

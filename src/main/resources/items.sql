@@ -1,0 +1,15 @@
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Pizza', 'Pepperoni Pizza', 8.99, 1);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Burger', 'Cheese Burger with Fries', 10.99, 2);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Wings', 'BBQ Wings', 6.99, 3);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Salad', 'Caesar Salad', 7.99, 3);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Drink', 'Margarita', 5.99, 5);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Appetizer', 'Loaded Fries', 4.99, 6);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Sandwich', 'Grilled Cheese', 5.99, 5);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Dessert', 'Chocolate Cake', 3.99, 8);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Pizza', 'Delicious Margherita Pizza', 9.99, 1);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Burger', 'Juicy Cheeseburger with Fries', 7.99, 2);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Wings', 'Spicy Buffalo Wings with Blue Cheese Dip', 6.99, 1);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Soup', 'Creamy Tomato Basil Soup', 4.99, 4);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Salad', 'Garden Salad with Grilled Chicken', 7.99, 1);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Fries', 'Seasoned Fries', 2.99, 6);
+INSERT INTO happy_hour_items (item_name, item_description, price, happy_hour_id) VALUES ('Tacos', 'Beef Tacos with Guacamole', 6.99, 7);

@@ -1,0 +1,10 @@
+INSERT INTO happy_hours (start_time, end_time, name, description, venue_id) VALUES ('16:00:00', '19:00:00', 'Happy Hour 1', 'Special deals on drinks', 1);
+INSERT INTO happy_hours (start_time, end_time, name, description, venue_id) VALUES ('17:00:00', '20:00:00', 'Happy Hour 2', 'Discounts on selected menu items', 2);
+INSERT INTO happy_hours (start_time, end_time, name, description, venue_id) VALUES ('15:00:00', '18:00:00', 'Happy Hour 3', '50% off on all drinks', 3);
+INSERT INTO happy_hours (start_time, end_time, name, description, venue_id) VALUES ('16:30:00', '19:30:00', 'Happy Hour 4', '$5 martinis every hour', 4);
+INSERT INTO happy_hours (start_time, end_time, name, description, venue_id) VALUES ('17:00:00', '20:00:00', 'Happy Hour 5', 'Special deals on appetizers', 5);
+INSERT INTO happy_hours (start_time, end_time, name, description, venue_id) VALUES ('16:00:00', '18:00:00', 'Happy Hour 6', 'Discounts on beers and wines', 6);
+INSERT INTO happy_hours (start_time, end_time, name, description, venue_id) VALUES ('15:00:00', '17:00:00', 'Happy Hour 7', '$5 margaritas every hour', 7);
+INSERT INTO happy_hours (start_time, end_time, name, description, venue_id) VALUES ('17:00:00', '19:00:00', 'Happy Hour 8', 'Discounts on cocktails', 8);
+INSERT INTO happy_hours (start_time, end_time, name, description, venue_id) VALUES ('16:00:00', '18:00:00', 'Happy Hour 9', 'Special deals on beers', 9);
+INSERT INTO happy_hours (start_time, end_time, name, description, venue_id) VALUES ('15:00:00', '17:00:00', 'Happy Hour 10', 'Discounts on wines', 10);

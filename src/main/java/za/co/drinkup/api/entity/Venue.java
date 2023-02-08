@@ -25,12 +25,15 @@ public class Venue {
     private Integer rating;
     private String restrictions;
 
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
 
     private Location location;
     @OneToMany(mappedBy = "venue", cascade = CascadeType.ALL)
     private List<HappyHourDetails> happyHourDetails;
+
+
 
 
 

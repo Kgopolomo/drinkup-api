@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import za.co.drinkup.api.dto.VenueDto;
 import za.co.drinkup.api.entity.HappyHourDetails;
 import za.co.drinkup.api.response.ResponseHandler;
 import za.co.drinkup.api.service.HappyHourDetailsService;
@@ -28,7 +27,7 @@ public class HappyHourDetailsController {
     }
 
     @Operation(summary = "Get list of happy hours", description = "", tags = {"profile"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = HappyHourDetails.class)))})
     @GetMapping("")
     public ResponseEntity<Object> getHappyHours() {
         return ResponseHandler.responseBuilder(null, HttpStatus.OK, happyHourDetailsService.getAllHappyHours());
@@ -36,7 +35,7 @@ public class HappyHourDetailsController {
     }
 
     @Operation(summary = "Get happy hour details", description = "", tags = {"profile"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = HappyHourDetails.class)))})
     @GetMapping("/{id}")
     public ResponseEntity<Object> getHappyHourById(@PathVariable Long id) {
         return ResponseHandler.responseBuilder(null, HttpStatus.OK, happyHourDetailsService.getHappyHourById(id));
@@ -44,7 +43,7 @@ public class HappyHourDetailsController {
     }
 
     @Operation(summary = "Add new happy hour details", description = "", tags = {"profile"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = HappyHourDetails.class)))})
     @PostMapping("")
     public ResponseEntity<Object> addHappyHour(@RequestBody HappyHourDetails happyHourDetails) {
         return ResponseHandler.responseBuilder("New Happy our added successfully.", HttpStatus.OK, happyHourDetailsService.addHappyHour(happyHourDetails));
@@ -52,7 +51,7 @@ public class HappyHourDetailsController {
     }
 
     @Operation(summary = "Update new happy hour details", description = "", tags = {"profile"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = HappyHourDetails.class)))})
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateHappyHour(@PathVariable Long id, @RequestBody HappyHourDetails happyHourDetails) {
         return ResponseHandler.responseBuilder("New Happy our updated successfully.", HttpStatus.OK, happyHourDetailsService.updateHappyHour(id, happyHourDetails));
@@ -60,7 +59,7 @@ public class HappyHourDetailsController {
     }
 
     @Operation(summary = "Delete happy hour", description = "", tags = {"profile"})
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = VenueDto.class)))})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = HappyHourDetails.class)))})
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteHappyHour(@PathVariable Long id) {
         return ResponseHandler.responseBuilder("Deleted successfully.", HttpStatus.OK, happyHourDetailsService.deleteHappyHour(id));

@@ -38,12 +38,12 @@ public class LocationService {
     public Location getLocationByLatitudeAndLongitude(double latitude, double longitude) {
         return locationRepository.findByLatitudeAndLongitude(latitude, longitude);
     }
-    public Double getDistanceBetweenLocations(Location userLocation, Location venueLocation) {
+    public Double getDistanceBetweenLocations(Double latitude, Double longitude, Location venueLocation) {
 
-        Double latDistance = toRadian(userLocation.getLatitude() - venueLocation.getLatitude());
-        Double lonDistance = toRadian(userLocation.getLongitude() - venueLocation.getLongitude());
+        Double latDistance = toRadian(latitude - venueLocation.getLatitude());
+        Double lonDistance = toRadian(longitude - venueLocation.getLongitude());
         Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) +
-                Math.cos(toRadian(venueLocation.getLatitude())) * Math.cos(toRadian(userLocation.getLatitude())) *
+                Math.cos(toRadian(venueLocation.getLatitude())) * Math.cos(toRadian(latitude)) *
                         Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
         Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         return EARTH_RADIUS * c;
@@ -51,5 +51,9 @@ public class LocationService {
 
     private static Double toRadian(Double value) {
         return value * Math.PI / 180;
+    }
+
+    public double convertMilesToKm(double miles) {
+        return miles * 1.609344;
     }
 }

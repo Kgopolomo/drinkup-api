@@ -56,16 +56,17 @@ public class VenueService {
         return hourDetailsRepository.findByVenue(venue);
     }
 
-    public List<Venue> getAllVenuesByLocation(Double latitude, Double longitude) {
-        Location userLocation = locationService.getLocationByLatitudeAndLongitude(latitude, longitude);
+    public List<Venue> getAllVenuesByLocation(Double latitude, Double longitude, Double proximityRange) {
+
         List<Venue> venues = venueRepository.findAll();
         List<Venue> venuesInProximity = new ArrayList<>();
 
         for (Venue venue : venues) {
             Location venueLocation = locationService.getLocationByLatitudeAndLongitude(venue.getLocation().getLatitude(), venue.getLocation().getLongitude());
-            double distance = locationService.getDistanceBetweenLocations(userLocation, venueLocation);
+            double distance = locationService.getDistanceBetweenLocations(latitude,longitude, venueLocation);
+            venue.getLocation().setDistance(distance);
 
-            if (distance <= 10) {
+            if (distance <= proximityRange) {
                 venuesInProximity.add(venue);
             }
         }
